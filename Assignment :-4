@@ -1,0 +1,92 @@
+answer - 1 :
+
+An in-place algorithm is an algorithm that does not need an extra space and produces an output in the same memory 
+that contains the data by transforming the input ‘in-place’. However, a small constant extra space used for variables is allowed.
+
+An algorithm that is not in-place is called a not-in-place or out-of-place algorithm. Unlike an in-place algorithm,
+the extra space used by an out-of-place algorithm depends on the input size.
+The standard merge sort algorithm is an example of out-of-place algorithm as it requires O(n) extra space for merging.
+The merging can be done in-place, but it increases the time complexity of the sorting routine.
+
+An in-place sorting algorithm sorts the elements in place: that is, it needs only O(1) extra space.
+An out-of-place sorting algorithm needs extra space to put the elements in as it's sorting them. Usually this means O(n) extra space.
+in some sorting algorithms, the program requires space which is more than or equal to the elements being sorted.
+Sorting which uses equal or more space is called not-in-place sorting
+
+
+amswer - 2 :
+
+// Outplace Insertion Sort Algorithm 
+#include <bits/stdc++.h>
+ using namespace std;
+
+// // created an extra array.
+
+void insertionSort(int arr[],int arr2[], int n,int m){
+    
+    for(int i = 1;i<n;i++){
+        int key = arr[i];
+        int j = i - 1;
+
+        while(j>=0 && arr[j]>key){
+            arr[j+1] = arr[j];
+            j = j - 1;
+        }
+        arr[j+1] = key;
+        int k = 0;
+        arr2[k] = key;
+        k++;
+    }
+}
+    void printArray(int arr2[], int m){
+        for (int i = 0; i < m; i++){
+            cout << arr2[i] << " ";        
+        }        
+    }
+
+    int main(){
+    int arr[] = { 2, 4, 6, 8, 10 };
+    int N = sizeof(arr) / sizeof(arr[0]);
+    int arr2[5] = {};
+ 
+    insertionSort(arr,arr2,N,5);
+    printArray(arr, N);
+ 
+    return 0;
+}
+
+//  Inplace Insertion Sort Algorithm
+
+void insertionSort2 (int arr[],int n ){
+    for(int i = 0; i<n; i++){
+        int key = arr[i];
+        int j = i - 1;
+
+        while(j>=0 && arr[j] > key){
+            arr[j+1] = arr[j];
+            j = j - 1;
+        }
+        arr[j+1] = key;
+    }
+}
+    void printArray(int arr[], int n){
+        for (int i = 0; i < n; i++){
+            cout << arr[i] << " ";        
+        }        
+    }
+
+    int main(){
+        int arr[] = {4,8,12,16,20};
+        int N2 = sizeof(arr)/sizeof(arr[0]);
+        insertionSort2(arr,N2);
+        printArray(arr,N2);
+    }
+    
+    
+    answer - 3 :
+    
+     Practical applications of inplace and outplace sorting algorithms
+   // Inplace techniques are useful to sort the lists containing limited 
+   amount of data in an efficient and space optimised manner. 
+   // Outplace techniques are useful when we have large amount of data such that we need to
+   store the immediate results. Here extra space requirement is necessary.
